@@ -1,9 +1,9 @@
-import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
+import { BsFillShieldLockFill, BsFillTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
-
 import OtpInput from "otp-input-react";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css"
 import { auth } from "../../firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
@@ -13,7 +13,7 @@ const App = () => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showOTP, setShowOTP] = useState(false);
+  const [showOTP, setShowOTP] = useState(true);
   const [user, setUser] = useState(null);
 
   function onCaptchVerify() {
@@ -70,7 +70,9 @@ const App = () => {
 
   return (
     <div className="SignupOuterContainer">
+
       <div className="SignupMainContainer">
+
         <Toaster toastOptions={{ duration: 4000 }} />
         <div id="recaptcha-container"></div>
         {user ? (
@@ -81,13 +83,13 @@ const App = () => {
           <div >
             {showOTP ? (
               <div className="OtpMaincontainer">
-                <div>
-                  <BsFillShieldLockFill size={30} />
+                <div className="ShieldIcon">
+                  <span><BsFillShieldLockFill size={30} /></span>
                 </div>
                 <label
                   htmlFor="otp"
                 >
-                  Enter your OTP
+                  <h3>Enter your OTP</h3>
                 </label>
                 <OtpInput
                   value={otp}
@@ -96,9 +98,9 @@ const App = () => {
                   otpType="number"
                   disabled={false}
                   autoFocus
-                  className="opt-container "
+                  className=""
                 ></OtpInput>
-                <button
+                <button className="VerifyButton"
                   onClick={onOTPVerify}
                 >
                   {loading && (
@@ -109,16 +111,14 @@ const App = () => {
               </div>
             ) : (
               <div className="PhoneMainContainer">
+                
                 <div className="PhoneIcon">
-                  <BsTelephoneFill size={30}/>
+                  <span><BsFillTelephoneFill size={30}/></span>
                 </div>
-                <label
-                  htmlFor=""
-                >
-                  Verify your phone number 
-                </label>
-                <PhoneInput country={"in"} value={ph} onChange={setPh} />
-                <button
+                
+                  <h3 className="VerifyText">Verify your phone number </h3>
+                <PhoneInput  country={"in"} value={ph} onChange={setPh} placeholder="" className="PhoneInput"/>
+                <button className="SignupSendButton"
                   onClick={onSignup}
                 >
                   {loading && (
@@ -126,6 +126,7 @@ const App = () => {
                   )}
                   <span>Send code via SMS</span>
                 </button>
+                  
               </div>
             )}
           </div>
