@@ -6,12 +6,12 @@ import Login from './authentication/Login';
 function App() {
   return (
     <div >
-            <Router>
-          <Routes>
-            <Route exact path='/' element={<Login />} />
-            <Route exact path='/signup' element={<Signup />} />
-          </Routes>
-        </Router>
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Login />} />
+          <Route exact path='/signup' element={<Signup />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
