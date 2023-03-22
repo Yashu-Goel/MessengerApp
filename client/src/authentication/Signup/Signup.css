@@ -1,0 +1,42 @@
+.SignupOuterContainer{
+    position: relative;
+    height: 100vh;
+    background-color: aliceblue;
+
+  }
+  .SignupMainContainer{
+    border: 2px solid red;
+    padding: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .PhoneMainContainer
+  {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 2rem;
+  }
+.PhoneIcon{
+    border: 2px solid red;
+    padding: 0.9rem 1rem;
+    border-radius: 50%;
+    background-color: #2b56c6;
+}
+  .OtpMaincontainer
+  {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
